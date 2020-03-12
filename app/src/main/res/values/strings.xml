@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Caculation Test</string>
+    <string name="app_name">Calculation Test</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_message">Caculation Test</string>
+    <string name="title_message">Calculation Test</string>
     <string name="title_image_info">title image</string>
     <string name="title_button_message">Enter</string>
     <string name="high_score_message">High Score:%d</string>
@@ -30,4 +30,5 @@
     <string name="lose_score">Your Score :%d</string>
     <string name="win_score">New Record :%d</string>
     <string name="button_back_to_title">Back</string>
+    <string name="answer_correct_message">Correct! Go On!</string>
 </resources>
