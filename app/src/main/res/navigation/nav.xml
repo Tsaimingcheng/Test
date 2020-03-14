@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_titleFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_blankFragment"
+            app:destination="@id/blankFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_loseFragment"
+            app:destination="@id/loseFragment" />
     </fragment>
     <fragment
         android:id="@+id/questionFragment"
@@ -44,4 +50,9 @@
             android:id="@+id/action_loseFragment_to_titleFragment"
             app:destination="@id/titleFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.caculationtest.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" />
 </navigation>

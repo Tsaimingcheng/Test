@@ -4,14 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.lifecycle.ViewModelStore;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -32,13 +31,15 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final MyViewModel myViewModel;
-        myViewModel = ViewModelProviders.of(requireActivity(),new SavedStateViewModelFactory(requireActivity().getApplication(),this)).get(MyViewModel.class);
+        myViewModel =new ViewModelProvider(getActivity(), new SavedStateViewModelFactory(getActivity().getApplication(),this)).get(MyViewModel.class);
+        myViewModel.generator();
         final FragmentQuestionBinding binding;
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_question, container, false);
         binding.setData(myViewModel);
         binding.setLifecycleOwner(requireActivity());
         final StringBuilder builder = new StringBuilder();
         View.OnClickListener listener = new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
             switch (v.getId()){
@@ -99,28 +100,30 @@ public class QuestionFragment extends Fragment {
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("ConstantConditions")
             @Override
-            public void onClick(View v) {
-                if (Integer.valueOf(builder.toString()).intValue() == myViewModel.getAnswer().getValue()){
-                    myViewModel.answerCorrect();
-                    builder.setLength(0);
-                    builder.append(getString(R.string.answer_correct_message));
+            public void onClick(View v)
+            { if (Integer.valueOf(builder.toString()).intValue() == myViewModel.getAnswer().getValue()){
+                myViewModel.answerCorrect();
+                builder.setLength(0);
+                binding.textView9.setText(R.string.answer_correct_message);
+            }
+            else{
+                NavController controller= Navigation.findNavController(v);
+                if (myViewModel.win_flag){
+                    controller.navigate(R.id.action_questionFragment_to_winFragment);
+                    myViewModel.win_flag =false;
+                    myViewModel.save();
                 }
                 else{
-                    NavController controller= Navigation.findNavController(v);
-                    if (myViewModel.win_flag){
-                        controller.navigate(R.id.action_questionFragment_to_winFragment);
-                        myViewModel.win_flag =false;
-                        myViewModel.save();
-                    }
-                    else{
-                        controller.navigate(R.id.action_questionFragment_to_loseFragment);
-                    }
+                    controller.navigate(R.id.action_questionFragment_to_loseFragment);
                 }
             }
+            }
         });
+
+
         return binding.getRoot();
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_question, container, false);
 
     }
-}
+    }

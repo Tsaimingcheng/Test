@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-            <variable
-                name="data"
-                type="com.example.caculationtest.MyViewModel" />
+        <variable
+            name="data"
+            type="com.example.caculationtest.MyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,6 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/Huge_front"
+            android:text="@{String.valueOf(data.leftNumber)}"
             app:layout_constraintBottom_toBottomOf="@+id/textView5"
             app:layout_constraintEnd_toStartOf="@+id/textView5"
             app:layout_constraintHorizontal_bias="0.5"
@@ -91,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/Huge_front"
+            android:text="@{String.valueOf(data.operator)}"
             app:layout_constraintBottom_toBottomOf="@+id/textView6"
             app:layout_constraintEnd_toStartOf="@+id/textView6"
             app:layout_constraintHorizontal_bias="0.5"
@@ -103,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/Huge_front"
+            android:text="@{String.valueOf(data.rightNumber)}"
             app:layout_constraintBottom_toBottomOf="@+id/textView7"
             app:layout_constraintEnd_toStartOf="@+id/textView7"
             app:layout_constraintHorizontal_bias="0.5"
@@ -126,8 +129,8 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{data.answer}"
             android:textSize="@dimen/Huge_front"
+            android:text="\?"
             app:layout_constraintBottom_toTopOf="@+id/guideline4"
             app:layout_constraintEnd_toStartOf="@+id/guideline9"
             app:layout_constraintHorizontal_bias="0.5"
@@ -139,12 +142,12 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/input_indicator"
             android:textSize="@dimen/mid_front"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toStartOf="@+id/guideline9"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
-            app:layout_constraintTop_toTopOf="@+id/guideline5"
-            tools:text="ans" />
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline10"
@@ -277,7 +280,7 @@
             app:layout_constraintGuide_percent="0.7" />
 
         <Button
-            android:id="@+id/buttonclear"
+            android:id="@+id/buttonSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/buttonSubmit"
@@ -295,13 +298,13 @@
             android:text="@string/button0"
             android:textSize="@dimen/button_front"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintEnd_toStartOf="@+id/buttonSubmit"
+            app:layout_constraintEnd_toStartOf="@+id/buttonclear"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buttonclear"
+            app:layout_constraintStart_toEndOf="@+id/buttonSubmit"
             app:layout_constraintTop_toTopOf="@+id/guideline12" />
 
         <Button
-            android:id="@+id/buttonSubmit"
+            android:id="@+id/buttonclear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/buttonclear"

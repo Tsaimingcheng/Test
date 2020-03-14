@@ -32,7 +32,7 @@ public class TitleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         MyViewModel myViewModel;
-        myViewModel = ViewModelProviders.of(requireActivity(),new SavedStateViewModelFactory(requireActivity().getApplication(),this)).get(MyViewModel.class);
+        myViewModel =new ViewModelProvider(getActivity(), new SavedStateViewModelFactory(getActivity().getApplication(),this)).get(MyViewModel.class);
         FragmentTitleBinding binding;
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_title,container,false);
         binding.setData(myViewModel);
