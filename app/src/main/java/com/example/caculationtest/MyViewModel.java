@@ -73,9 +73,10 @@ public class MyViewModel extends AndroidViewModel {
                 getAnswer().setValue(x);
                 getLeftNumber().setValue(y);
                 getRightNumber().setValue(x - y);
-            } else {
+            }
+            else {
                 getAnswer().setValue(y);
-                getLeftNumber().setValue(y);
+                getLeftNumber().setValue(x);
                 getRightNumber().setValue(y - x);
             }
         } else {
@@ -100,7 +101,7 @@ public class MyViewModel extends AndroidViewModel {
     }
     @SuppressWarnings("ConstantConditions")
     void answerCorrect(){
-        getCurrentScore().setValue(getCurrentScore().getValue() + 1);
+        getCurrentScore().setValue(getCurrentScore().getValue()+1);
         if (getCurrentScore().getValue() >getHighScore().getValue()){
             getHighScore().setValue(getCurrentScore().getValue());
             win_flag = true ;

@@ -34,4 +34,8 @@
     <string name="quit_dialog_title">Are You Sure Quit?</string>
     <string name="dialog_positive_message">Ok</string>
     <string name="dialog_negative_message">Cancel</string>
+    <string name="title_nav_message">WELCOME</string>
+    <string name="question_nav_message">TESTING</string>
+    <string name="win_nav_message">WIN</string>
+    <string name="lose_nav_message">LOSE</string>
 </resources>

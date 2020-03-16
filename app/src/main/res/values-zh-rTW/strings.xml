@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">C小小算術家alculation Test</string>
+    <string name="app_name">小小算術家</string>
     <string name="answer_correct_message">回答正確</string>
     <string name="button_back_to_title">重新來過</string>
     <string name="buttonclear">清除</string>
@@ -17,4 +17,8 @@
     <string name="win_message">挑戰成功!</string>
     <string name="win_score">創造新紀錄:</string>
     <string name="lose_message">挑戰失敗!</string>
+    <string name="title_nav_message">歡迎</string>
+    <string name="question_nav_message">遊戲開始</string>
+    <string name="win_nav_message">勝利</string>
+    <string name="lose_nav_message">失敗</string>
 </resources>

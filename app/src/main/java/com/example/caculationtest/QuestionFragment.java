@@ -31,8 +31,9 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final MyViewModel myViewModel;
-        myViewModel =new ViewModelProvider(getActivity(), new SavedStateViewModelFactory(getActivity().getApplication(),this)).get(MyViewModel.class);
+        myViewModel =new ViewModelProvider(requireActivity(), new SavedStateViewModelFactory(getActivity().getApplication(),getActivity())).get(MyViewModel.class);
         myViewModel.generator();
+        myViewModel.getCurrentScore().setValue(0);
         final FragmentQuestionBinding binding;
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_question, container, false);
         binding.setData(myViewModel);
@@ -101,11 +102,16 @@ public class QuestionFragment extends Fragment {
             @SuppressWarnings("ConstantConditions")
             @Override
             public void onClick(View v)
-            { if (Integer.valueOf(builder.toString()).intValue() == myViewModel.getAnswer().getValue()){
-                myViewModel.answerCorrect();
-                builder.setLength(0);
-                binding.textView9.setText(R.string.answer_correct_message);
-            }
+            {
+                if(builder.length()==0){
+                    builder.append("-1");
+                }
+                if (Integer.valueOf(builder.toString()).intValue() == myViewModel.getAnswer().getValue()){
+                    builder.setLength(0);
+                    binding.textView9.setText(R.string.answer_correct_message);
+                    myViewModel.answerCorrect();
+                }
+
             else{
                 NavController controller= Navigation.findNavController(v);
                 if (myViewModel.win_flag){
@@ -119,11 +125,8 @@ public class QuestionFragment extends Fragment {
             }
             }
         });
-
-
         return binding.getRoot();
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_question, container, false);
-
     }
     }
